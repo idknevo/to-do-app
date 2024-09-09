@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
   --main-color: #5f3dc4;
@@ -8,6 +8,13 @@
   --color-dark: #212529;
   --color-light: #f9f9f9;
   --color-warning: #632424;
+  --body-dark: #212529;
+  --body-light: var(var(--main-color));
+  --title-dark: rgba(0, 0, 0, 0.1);
+  --title-light: rgba(255, 255, 255, 0.1);
+  --list-dark-mode: #adb5bd;
+  --list-header-dark: #868e96;
+  --list-header-light: #e4e4e4
 }
 
 *,
@@ -25,13 +32,18 @@ body {
   color: var(--color-light);
   display: grid;
   column-gap: 80px;
-  grid:    "title title title title" auto    "... lists list ... " auto /    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+  grid:
+    "title title title title" auto "... lists list ... " auto / 1fr minmax(
+      100px,
+      300px
+    )
+    minmax(250px, 500px) 1fr;
   position: relative;
-  transition: background-color 0.3s ;
-  -webkit-transition: background-color 0.3s ;
-  -moz-transition: background-color 0.3s ;
-  -ms-transition: background-color 0.3s ;
-  -o-transition: background-color 0.3s ;
+  transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
 }
 
 .title {
@@ -152,11 +164,15 @@ form {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  /* overflow: hidden; */
+  transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
 }
 
 .todo-header {
-  background-color: #e4e4e4;
+  background-color: var(--list-header-light);
   padding: var(--spacer);
   display: flex;
   justify-content: space-between;
@@ -166,6 +182,11 @@ form {
   -moz-border-radius: 10px 10px 0 0;
   -ms-border-radius: 10px 10px 0 0;
   -o-border-radius: 10px 10px 0 0;
+  transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
 }
 
 .list-title {
@@ -230,10 +251,10 @@ form {
   color: var(--main-color);
 }
 
-[type="checkbox"]:checked + label .custom-checkbox{
+[type="checkbox"]:checked + label .custom-checkbox {
   background-color: var(--main-color);
   border-color: var(--main-color);
-  box-shadow:  inset 0 0 0 2px white;
+  box-shadow: inset 0 0 0 2px white;
 }
 
 [type="checkbox"]:checked + label {
@@ -299,7 +320,7 @@ form {
 }
 
 /* dark mode */
-.dark-mode{
+.dark-mode {
   position: absolute;
   top: 20px;
   right: 100px;

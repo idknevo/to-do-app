@@ -11,6 +11,7 @@ const deleteCompletedTasksBtn = document.getElementById(
   "delete-comp-tasks-btn"
 );
 const listDisplayContainer = document.getElementById("list-container");
+const listHeader = document.getElementById("todo-header");
 const listTitle = document.getElementById("list-title");
 const listsCount = document.getElementById("lists-count");
 const tasksContainer = document.getElementById("tasks");
@@ -160,12 +161,22 @@ render();
 darkModeInput.checked = JSON.parse(localStorage.getItem("mode"));
 
 const updateBackground = function () {
+  const styleValue = getComputedStyle(body);
   if (darkModeInput.checked) {
-    body.style.backgroundColor = "#212529";
-    titleEl.style.color = "rgba(255, 255, 255, 0.1)";
+    body.style.backgroundColor = styleValue.getPropertyValue("--body-dark");
+    titleEl.style.color = styleValue.getPropertyValue("--title-light");
+    listDisplayContainer.style.backgroundColor =
+      styleValue.getPropertyValue("--list-dark-mode");
+    listHeader.style.backgroundColor =
+      styleValue.getPropertyValue("--list-header-dark");
   } else {
-    body.style.backgroundColor = "#5f3dc4";
-    titleEl.style.color = "rgba(0, 0, 0, 0.1)";
+    body.style.backgroundColor = styleValue.getPropertyValue("--body-light");
+    titleEl.style.color = styleValue.getPropertyValue("--title-dark");
+    listDisplayContainer.style.backgroundColor =
+      styleValue.getPropertyValue("--color-light");
+    listHeader.style.backgroundColor = styleValue.getPropertyValue(
+      "--list-header-light"
+    );
   }
 };
 updateBackground();
