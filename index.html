@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="src/media/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="src/css/style.css" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1 class="title">Stuff I need to do</h1>
+
+    <div class="all-lists">
+      <h2 class="task-lists-title">My Lists</h2>
+      <ul class="task-lists"></ul>
+      <form action="" class="list-form" id="new-list-form">
+        <input
+          type="text"
+          class="input-new list"
+          id="new-list-input"
+          placeholder="new list name"
+          aria-label="new list name"
+        />
+        <button class="btn create" aria-label="create new list">+</button>
+      </form>
+    </div>
+
+    <div class="todo-list" id="list-container">
+      <div class="todo-header">
+        <h2 class="list-title" id="list-title"></h2>
+        <p class="tasks-count" id="lists-count"></p>
+      </div>
+      <div class="todo-body">
+        <div class="tasks" id="tasks"></div>
+        <div class="create-new-task">
+          <form action="" id="new-task-form">
+            <input
+              type="text"
+              class="input-new task"
+              id="new-task-input"
+              placeholder="new task name"
+              aria-label="new task name"
+            />
+            <button class="btn create" aria-label="create new task">+</button>
+          </form>
+        </div>
+      </div>
+      <div class="delete-btns">
+        <button class="btn delete" id="delete-comp-tasks-btn">
+          Delete completed tasks
+        </button>
+        <button class="btn delete" id="delete-list-btn">Delete list</button>
+      </div>
+    </div>
+    <div class="dark-mode">
+      <input type="checkbox" class="dark-mode-input" id="dark-mode">
+      <label for="dark-mode" class="dark-mode-label">
+        <div class="dark-mode-circle"></div>
+      </label>
+    </div>
+    <script src="src/js/script.js"></script>
+  </body>
+</html>
