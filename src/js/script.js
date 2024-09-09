@@ -6,7 +6,6 @@ const titleEl = document.querySelector(".title");
 const listsContainer = document.querySelector(".task-lists");
 const newListForm = document.getElementById("new-list-form");
 const newListInput = document.getElementById("new-list-input");
-const deleteListBtn = document.getElementById("delete-list-btn");
 const deleteCompletedTasksBtn = document.getElementById(
   "delete-comp-tasks-btn"
 );
@@ -62,12 +61,6 @@ newTaskForm.addEventListener("submit", function (e) {
   updateAndRender();
 });
 
-deleteListBtn.addEventListener("click", function () {
-  lists = lists.filter((list) => list.id !== selectedListId);
-  selectedListId = null;
-  updateAndRender();
-});
-
 deleteCompletedTasksBtn.addEventListener("click", function () {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
@@ -114,12 +107,24 @@ function renderTasks(list) {
 
 function renderLists() {
   lists.forEach((list) => {
-    const listElement = document.createElement("li");
-    listElement.classList.add("task-list");
-    listElement.dataset.listId = list.id;
-    if (list.id === selectedListId) listElement.classList.add("active-list");
-    listElement.innerHTML = list.name;
-    listsContainer.appendChild(listElement);
+    const html = `
+          <li class="task-list ${
+            list.id === selectedListId ? "active-list" : ""
+          }" data-list-id="${list.id}">
+          ${list.name}
+          ${
+            list.id === selectedListId
+              ? `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="delete-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>`
+              : ``
+          }
+          </li>
+    `;
+    listsContainer.insertAdjacentHTML("beforeend", html);
+    const deleteListIcon = document.querySelector(".delete-icon");
+    if (!deleteListIcon) return;
+    deleteListIcon.addEventListener("click", deleteList);
   });
 }
 
@@ -129,6 +134,12 @@ function createList(name) {
     name: name,
     tasks: [],
   };
+}
+
+function deleteList() {
+  lists = lists.filter((list) => list.id !== selectedListId);
+  selectedListId = null;
+  updateAndRender();
 }
 
 function createTask(name) {

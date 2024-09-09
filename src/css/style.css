@@ -94,6 +94,39 @@ body {
   font-weight: 800;
   letter-spacing: 1px;
   list-style: disc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.active-list::before{
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  left: -17px;
+  top: 11px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.active-list .delete-icon {
+  width: 22px;
+  height: 22px;
+  transition: stroke 0.3s;
+  -webkit-transition: stroke 0.3s;
+  -moz-transition: stroke 0.3s;
+  -ms-transition: stroke 0.3s;
+  -o-transition: stroke 0.3s;
+}
+
+.active-list .delete-icon:hover {
+  stroke: #7950f2;
 }
 
 form {
@@ -297,7 +330,7 @@ form {
 
 .delete-btns {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   position: absolute;
   width: 100%;
   left: 0;
