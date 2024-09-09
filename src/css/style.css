@@ -9,7 +9,7 @@
   --color-light: #f9f9f9;
   --color-warning: #632424;
   --body-dark: #212529;
-  --body-light: var(var(--main-color));
+  --body-light: var(--main-color);
   --title-dark: rgba(0, 0, 0, 0.1);
   --title-light: rgba(255, 255, 255, 0.1);
   --list-dark-mode: #adb5bd;
